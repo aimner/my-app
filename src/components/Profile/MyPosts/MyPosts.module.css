@@ -1,0 +1,17 @@
+.img {
+  width: 75%;
+}
+.text {
+  display:flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.post {
+  margin-left: 15px;
+}
+.myPosts,
+.textArea,
+.textButton
+{
+  margin-bottom: 10px;
+}
