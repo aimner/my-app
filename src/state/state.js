@@ -1,3 +1,5 @@
+import {renderApp} from '.././render/render'
+
 let state = {
   messagePage: {
     dialogs: [
@@ -20,6 +22,18 @@ let state = {
 
     ]
   }
+};
+
+export let newpost = (text) => {
+  let textPost = {content: text,};
+  state.profilePage.posts.push(textPost);
+  renderApp();
+};
+
+export let newmessage = (text) => {
+  let textMessage = {content: text,};
+  state.messagePage.dialogsItem.push(textMessage);
+  renderApp();
 };
 
 export default state;
