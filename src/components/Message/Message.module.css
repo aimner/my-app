@@ -6,3 +6,12 @@
   display: flex;
   flex-direction: column;
 }
+.formarea {
+  grid-column: 2/3;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.formarea textarea {
+  margin-bottom: 10px;
+}
