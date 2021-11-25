@@ -10,10 +10,16 @@ let dialogsItemNew = props.messagePage.dialogsItem.map( el => <DialogsItem conte
 let dialogsNew = props.messagePage.dialogs.map( el => <DialogsName name={el.name} id={el.id} />);
 
 let newMessage = React.createRef();
+
 let addNewMessage = () => {
     let text = newMessage.current.value;
     props.newmessage(text);
 }
+
+let changeMessageText = () => {
+    let text = newMessage.current.value;
+    props.changemessage(text);
+};
 
     return (
         <div className={classes.dialogs}>
@@ -23,10 +29,10 @@ let addNewMessage = () => {
             <div className={classes.dialogsItem}>
              {dialogsItemNew}
             </div>
-            <form className={classes.formarea}>
-              <textarea ref={newMessage}></textarea>
+            <div className={classes.formarea}>
+              <textarea ref={newMessage} onChange={changeMessageText} value={props.messagePage.firstMessage}></textarea>
               <button onClick={addNewMessage}>Send Message</button> 
-            </form>
+            </div>
             
         </div>
     )

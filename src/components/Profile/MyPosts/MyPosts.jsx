@@ -8,8 +8,13 @@ const MyPosts = (props) => {
 let newPost = React.createRef();
 
 let addNewPost = () => {
-  let text = newPost.current.value;
-  props.newpost(text);
+  props.newpost();
+};
+
+let updatePost = () => {
+    let text = newPost.current.value;
+    props.changepost(text);
+
 };
 
 let postNew = props.profilePage.posts.map( el => <Post content={el.content} />);
@@ -18,7 +23,7 @@ let postNew = props.profilePage.posts.map( el => <Post content={el.content} />);
        <div>
            <div className={classes.myPosts}>My posts</div>
            <div className={classes.text}>
-               <textarea ref = {newPost} className={classes.textArea}></textarea>
+               <textarea ref = {newPost} className={classes.textArea} onChange={updatePost} value={props.profilePage.firstPost}/>
                <button onClick={ addNewPost } className={classes.textButton}>Add post</button>
            </div>
            <div>

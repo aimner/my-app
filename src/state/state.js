@@ -1,4 +1,6 @@
-import {renderApp} from '.././render/render'
+let renderApp = () => {
+  alert("kak dela")
+};
 
 let state = {
   messagePage: {
@@ -13,27 +15,48 @@ let state = {
       {content:"My name",},
       {content:"I'm from Belarus",},
     ], 
+    firstMessage: '',
 
   },
   profilePage: {
     posts: [
       {content: 'Hi, my name Egor',},
       {content: "i'm from Belarus",},
-
-    ]
+    ],
+    firstPost: '',
   }
 };
 
-export let newpost = (text) => {
-  let textPost = {content: text,};
+export const newPost = () => {
+  let textPost = {content: state.profilePage.firstPost,};
   state.profilePage.posts.push(textPost);
-  renderApp();
+  state.profilePage.firstPost = "";
+  renderApp(state);
+ 
 };
 
-export let newmessage = (text) => {
-  let textMessage = {content: text,};
+export const newMessage = (text) => {
+  let textMessage = {content: state.messagePage.firstMessage,};
   state.messagePage.dialogsItem.push(textMessage);
-  renderApp();
+  state.messagePage.firstMessage = "";
+  renderApp(state);
 };
+
+export const changePost = (text) => {
+  state.profilePage.firstPost = text;
+  console.log(state.profilePage.firstPost);
+  
+  renderApp(state);
+}
+
+export const changeMessage = (text) => {
+  state.messagePage.firstMessage = text;
+  console.log(state.messagePage.firstMessage);
+  renderApp(state);
+}
+
+export const call = (observer) => {
+  renderApp = observer;
+}
 
 export default state;
