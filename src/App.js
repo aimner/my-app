@@ -23,8 +23,8 @@ function App(props) {
         <Header />
         <Navbar />
         <div className="Main">
-          <Route path="/profile" render={() => <Profile profilePage={props.state.profilePage} newpost={props.newpost}/>} />
-          <Route path="/message" render={() => <Message messagePage={props.state.messagePage} newmessage={props.newmessage} />} />
+          <Route path="/profile" render={() => <Profile profilePage={props.state.profilePage} newpost={props.newpost} changepost={props.changepost}/>} />
+          <Route path="/message" render={() => <Message messagePage={props.state.messagePage} newmessage={props.newmessage} changemessage={props.changemessage} />} />
           <Route path="/music" render={() => <Music />} />
           <Route path="/news" render={() => <News />} />
         </div>
