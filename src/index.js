@@ -9,10 +9,11 @@ import App from './App';
 
 
 export let renderApp = () => {
-    ReactDOM.render(
-        <App state = {store._state} newpost = {store.newPost.bind(store)} newmessage= {store.newMessage.bind(store)} changepost={store.changePost.bind(store)} changemessage={store.changeMessage.bind(store)}/>,
-      document.getElementById('root')
-    )};
+  ReactDOM.render(
+    <App state={store._state} dispatch={store.dispatch.bind(store)} />,
+    document.getElementById('root')
+  )
+};
 
 renderApp(store.getState());
 store.call(renderApp);

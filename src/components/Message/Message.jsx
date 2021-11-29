@@ -12,13 +12,12 @@ let dialogsNew = props.messagePage.dialogs.map( el => <DialogsName name={el.name
 let newMessage = React.createRef();
 
 let addNewMessage = () => {
-    let text = newMessage.current.value;
-    props.newmessage(text);
+    props.dispatch({type:"NEW-MESSAGE",});
 }
 
 let changeMessageText = () => {
     let text = newMessage.current.value;
-    props.changemessage(text);
+    props.dispatch({type:"CHANGE-MESSAGE", text: text,});
 };
 
     return (
