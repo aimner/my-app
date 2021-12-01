@@ -20,7 +20,6 @@ let updatePost = () => {
 };
 
 let postNew = props.profilePage.posts.map( el => <Post content={el.content} />);
-
    return (
        <div>
            <div className={classes.myPosts}>My posts</div>
