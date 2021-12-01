@@ -29,7 +29,7 @@ const store = {
   getState() {
     return this._state
   },
-  call(observer) {
+  subscribe(observer) {
     this.renderApp = observer;
   },
   renderApp() {

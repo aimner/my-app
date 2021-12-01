@@ -1,7 +1,15 @@
 const actionNewPost = "NEW-POST";
 const actionChangeNewPost = "CHANGE-POST";
 
-const postsReducer = (state, action) => {
+let profilePage = {
+    posts: [
+        { content: 'Hi, my name Egor', },
+        { content: "i'm from Belarus", },
+    ],
+    firstPost: '',
+};
+
+const postsReducer = (state = profilePage, action) => {
     switch (action.type) {
         case actionNewPost:
             let textPost = { content: state.firstPost, };
