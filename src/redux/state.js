@@ -30,9 +30,10 @@ const store = {
     return this._state
   },
   subscribe(observer) {
-    this.renderApp = observer;
+    this.callSubs = observer; 
+    // () => {let state = store.getState();renderApp(state);
   },
-  renderApp() {
+  callSubs() {
     alert("kak dela")
   },
   dispatch(action) {  
@@ -41,47 +42,10 @@ const store = {
     this._state.messagePage = messageReducer(this._state.messagePage, action);
     
     
-    this.renderApp(this._state);
+    this.callSubs(this._state); // redux не умеет передавать state при его изменении, (this.callSubs() - так происходит в redux)
+                                // поэтому в observer мы передаем анонимную стрелочную функцию, которая сможет получить state и вызвать renderApp
     },
   };
-//     switch (action.type) {
-//       case ("NEW-POST"):
-//         let textPost = { content: this._state.profilePage.firstPost, };
-//         this._state.profilePage.posts.push(textPost);
-//         this._state.profilePage.firstPost = "";
-//         this.renderApp(this._state);
-//         break;
-//       case ("CHANGE-POST"):
-//         this._state.profilePage.firstPost = action.text;
-//         this.renderApp(this._state);
-//         break;
-//       case ("NEW-MESSAGE"):
-//         let textMessage = { content: this._state.messagePage.firstMessage, };
-//         this._state.messagePage.dialogsItem.push(textMessage);
-//         this._state.messagePage.firstMessage = "";
-//         this.renderApp(this._state);
-//         break;
-//       case ("CHANGE-MESSAGE"):
-//         this._state.messagePage.firstMessage = action.text;
-//         this.renderApp(this._state);
-//         break;
-//       default:
-//         alert("шото не так");
-//     }
-//   },
-// }
 
-// export const newPostAction = () => {
-//   return {type: actionNewPost}
-// };
-// export const newPostChangeAction = (text) => {
-//   return {type: actionChangeNewPost, text: text}
-// };
-// export const newMessageAction = () => {
-//   return {type: actionNewMessage}
-// };
-// export const newMessageChangeAction = (text) => {
-//   return {type: actionChangeMessagePost, text: text,}
-// };
 
 export default store;

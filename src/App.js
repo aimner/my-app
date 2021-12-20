@@ -3,7 +3,7 @@ import './App.css';
 import Header from './components/Header/Header';
 import Profile from './components/Profile/Profile';
 import Navbar from './components/Navbar/Navbar';
-import Message from './components/Message/Message';
+import MessageContainer from './components/Message/MessageContainer';
 import Music from './components/Music/Music';
 import News from './components/News/News';
 import { BrowserRouter, Route } from 'react-router-dom';
@@ -12,7 +12,7 @@ import { BrowserRouter, Route } from 'react-router-dom';
 
 
 function App(props) {
-
+//  debugger;
 
 
 
@@ -23,8 +23,8 @@ function App(props) {
         <Header />
         <Navbar />
         <div className="Main">
-          <Route path="/profile" render={() => <Profile profilePage={props.state.profilePage} dispatch={props.dispatch} />} />
-          <Route path="/message" render={() => <Message messagePage={props.state.messagePage} dispatch={props.dispatch} />} />
+          <Route path="/profile" render={() => <Profile />} />
+          <Route path="/message" render={() => <MessageContainer />} />
           <Route path="/music" render={() => <Music />} />
           <Route path="/news" render={() => <News />} />
         </div>
