@@ -2,23 +2,23 @@ import React from "react";
 import classes from './Message.module.css';
 import DialogsItem from "./DialogsItem/DialogsItem";
 import DialogsName from "./DialogsName/DialogsName";
-import {newMessageAction, newMessageChangeAction} from '../../redux/Messagesreducer';
+
 
 
 const Message = (props) => {
 
-let dialogsItemNew = props.messagePage.dialogsItem.map( el => <DialogsItem content={el.content} />);  
-let dialogsNew = props.messagePage.dialogs.map( el => <DialogsName name={el.name} id={el.id} />);
+let dialogsItemNew = props.dialogsItem.map( el => <DialogsItem content={el.content} />);  
+let dialogsNew = props.dialogs.map( el => <DialogsName name={el.name} id={el.id} />);
 
 let newMessage = React.createRef();
 
 let addNewMessage = () => {
-    props.dispatch(newMessageAction());
+    props.addNewMessageText();
 }
 
 let changeMessageText = () => {
     let text = newMessage.current.value;
-    props.dispatch(newMessageChangeAction(text));
+    props.changeNewMessageText(text);
 };
 
     return (
@@ -30,7 +30,7 @@ let changeMessageText = () => {
              {dialogsItemNew}
             </div>
             <div className={classes.formarea}>
-              <textarea ref={newMessage} onChange={changeMessageText} value={props.messagePage.firstMessage}></textarea>
+              <textarea ref={newMessage} onChange={changeMessageText} value={props.firstMessage}></textarea>
               <button onClick={addNewMessage}>Send Message</button> 
             </div>
             
