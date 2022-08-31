@@ -1,0 +1,26 @@
+.section {
+    flex-grow: 1;
+}
+
+.section_side__panel {
+    background-color: rgb(15, 158, 158);
+    height: 100%;
+}
+
+.list_item__link {
+    text-decoration: none;
+    color: white;
+
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.active{
+    color: gold;
+}
+
