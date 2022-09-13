@@ -1,20 +1,22 @@
 import React from 'react';
 import classes from './App.module.scss';
-import { Header } from './components/Header/Headers';
+import Header from './components/Header/HeaderContainer';
 import { Main } from './components/Main/Main';
+import { BrowserRouter} from "react-router-dom";
 
 
 
 
 
 
-const App = (props) => {
+const App = () => {
   return (
-
-    <div className={`${classes.container}`}>
+    <BrowserRouter>
+      <div className={`${classes.container}`}>
         <Header />
-        <Main store={props.store} />
-    </div>
+        <Main />
+      </div>
+    </BrowserRouter>
   )
 }
 

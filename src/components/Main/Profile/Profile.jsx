@@ -2,14 +2,17 @@ import React from "react";
 import classes from "./Profile.module.scss"
 import { Posts } from "./Posts/Posts";
 import { ProfileInfo } from "./ProfileInfo/ProfileInfo";
-import { ProfileInput } from "./ProfileInput/ProfileInput";
+import { ProfileInputContainer } from "./ProfileInput/ProfileInput";
+
 
 export const Profile = (props) => {
+
+
   return (
     <section className={classes.section}>
       <div className={classes.section__profile}>
-        <ProfileInfo />
-        <ProfileInput newPost={props.newPost} addNewPostText={props.addNewPostText} changePostText={props.changePostText}/>
+        <ProfileInfo profile={props.profile} status={props.status} setStatusThunk={props.setStatusThunk}/>
+        <ProfileInputContainer newPost={props.newPost} addNewPostText={props.addNewPostText} />
         <Posts posts={props.posts}/>
       </div>
     </section>

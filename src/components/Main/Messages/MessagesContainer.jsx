@@ -1,12 +1,9 @@
-import React from "react";
 import { Messages } from "./Messages";
-import {
-  addNewMessageActionCreator,
-  updateNewMessageActionCreator,
-} from "../../../state/messageReducer";
+import { addNewMessageActionCreator } from "../../../state/messageReducer";
 
-
-import { connect } from 'react-redux/es/exports';
+import { connect } from "react-redux/es/exports";
+import { AuthHoc } from "./../../../hoc/AuthHoc";
+import { compose } from "redux";
 
 // export const MessagesContainer = (props) => {
 
@@ -35,25 +32,25 @@ import { connect } from 'react-redux/es/exports';
 //   );
 // };
 
-
 let mapStateToPropse = (state) => {
-    return {
-      newMessage: state.messagesPage.newMessage,
-      users: state.messagesPage.users,
-      messages: state.messagesPage.messages
+  return {
+    newMessage: state.messagesPage.newMessage,
+    users: state.messagesPage.users,
+    messages: state.messagesPage.messages,
+  };
+};
+
+let mapDispatchToProps = (dispatch) => {
+  return {
+    addNewMessage: (message) => {
+      dispatch(addNewMessageActionCreator(message));
     }
-  }
-  
-  let mapDispatchToProps = (dispatch) => {
-    return {
-        addNewMessage: () => {
-        dispatch(addNewMessageActionCreator())
-      },
-      changeMessageText: (text) => {
-        dispatch(updateNewMessageActionCreator(text))
-      }
-    }
-  }
-  
-  
-  export const MessagesContainer = connect(mapStateToPropse, mapDispatchToProps)(Messages)
+  };
+};
+
+export default compose(
+  connect(mapStateToPropse, mapDispatchToProps),
+  AuthHoc
+)(Messages);
+
+// export const MessagesContainer = connect(mapStateToPropse, mapDispatchToProps)(AuthHoc(Messages))

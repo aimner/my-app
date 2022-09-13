@@ -2,7 +2,8 @@ import React from "react";
 import { Message } from "./Message/Message";
 import { Dialogs } from "./Dialogs/Dialogs";
 import classes from "./Messages.module.scss"
-import { MessageInput } from './MessageInput/MessageInput';
+import { MessagesInputContainer } from './MessageInput/MessageInput';
+
 
 
 
@@ -14,7 +15,7 @@ export const Messages = (props) => {
       <div className={classes.messages}>
       <Dialogs users={props.users}/>
       <Message messages={props.messages}/>
-      <MessageInput changeMessageText={props.changeMessageText} newMessage={props.newMessage} addNewMessage={props.addNewMessage}></MessageInput>
+      <MessagesInputContainer addNewMessage={props.addNewMessage}></MessagesInputContainer>
       </div>
     </section>
   );

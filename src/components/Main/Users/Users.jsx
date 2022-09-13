@@ -1,28 +1,30 @@
 import React from "react";
 import { User } from "./User/User";
 import classes from "./Users.module.scss";
-import * as axios from "axios";
+import { UserPagination } from "./UsersPagination/UserPagination";
+import { Preloader } from './../../Common/Preloader/Preloader';
 
 export const Users = (props) => {
-  console.log(props);
-  if (!props.users) {
-    axios
-      .get("https://social-network.samuraijs.com/api/1.0/users")
-      .then((value) => {
-        console.log(value);
-        props.setUsers(value.data.items);
-      });
-  }
 
   return (
     <section className={classes.section}>
+      {props.preload ? <Preloader/> :       
+      (<UserPagination
+        pageCount={props.totalCount / props.usersCount}
+        currentPage={props.currentPage}
+        onChangeCurrentPage={props.onChangeCurrentPage}
+      />
+      )
+      }
       {props.users.map((item) => (
         <User
           user={item}
-          followUser={props.followUser}
-          unFollowUser={props.unFollowUser}
+          followId = {props.followId}
+          followUserThunk = {props.followUserThunk}
+          unFollowUserThunk = {props.unFollowUserThunk}
         ></User>
       ))}
+      
     </section>
   );
 };

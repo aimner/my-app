@@ -1,23 +1,41 @@
 import React from "react";
+import { Field, reduxForm } from "redux-form";
+import { minLength } from './../../../../Validate/Validate';
+import { textareaControl } from './../../../Common/FormControl/FormControl';
 
 
+const MessageInput = (props) => {
 
-export const MessageInput = (props) => {
 
-    const messageText = React.createRef()
+  const { handleSubmit } = props;
 
-    const onChangeMessageText = () => {
-       props.changeMessageText(messageText.current.value)
-    }
-    
-    const onAddNewMessage = () => {
-       props.addNewMessage()
-    }
+  return (
+    <form onSubmit={handleSubmit}>
+      <Field
+        component={textareaControl}
+        name={'message'}
+        validate={[minLength]}
+      />
+      <button>Send</button>
+    </form>
+  );
+};
+
+export const MessagesInputContainer = (props) => {
+  let onSubmit = (formData) => {
+
+    props.addNewMessage(formData.message)
+
+  }
+
 
   return (
     <div>
-      <textarea ref={messageText} onChange={onChangeMessageText} value={props.newMessage.text}></textarea>
-      <button onClick={onAddNewMessage}>Send</button>
+      <MessageFormRedux onSubmit={onSubmit} />
     </div>
   );
 };
+
+const MessageFormRedux = reduxForm({
+  form: "message",
+})(MessageInput);
