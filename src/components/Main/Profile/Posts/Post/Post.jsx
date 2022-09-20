@@ -2,7 +2,6 @@ import React from "react";
 import classes from "./Post.module.scss";
 
 export const Post = (props) => {
-  // debugger
   return (
     <div>
       <img

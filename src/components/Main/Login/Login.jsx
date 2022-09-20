@@ -10,27 +10,25 @@ import { Navigate } from "react-router-dom";
 let maxLengthNumber = maxLength(20);
 
 const LoginContainer = (props) => {
-
   const onSubmit = (value) => {
-    props.loginThunk(value.email, value.password, )
-  }
+    props.loginThunk(value.email, value.password);
+  };
 
-  if(props.isAuth) return <Navigate to="/profile" />   
+  if (props.isAuth) return <Navigate to="/profile" />;
 
   return (
     <section className={classes.section}>
       <div className={classes.section__profile}>
         <h1>LOGIN</h1>
-        <LoginFormRedux onSubmit={onSubmit}/>
+        <LoginFormRedux onSubmit={onSubmit} />
       </div>
     </section>
   );
 };
 
 const Login = (props) => {
-
   const { handleSubmit } = props;
-  
+
   return (
     <form onSubmit={handleSubmit}>
       <div>
@@ -55,6 +53,7 @@ const Login = (props) => {
         <Field name="rememberMe" component="input" type="checkbox" />
         запомнить меня?
       </div>
+      <div className={props.error ? classes.error : null}>{props.error}</div>
       <div>
         <button>Отправить данные</button>
       </div>
@@ -69,7 +68,7 @@ const LoginFormRedux = reduxForm({
 const mapStateToPropse = (state) => {
   return {
     isAuth: state.auth.isAuth,
-  }
-}
+  };
+};
 
-export default connect(mapStateToPropse, { loginThunk })(LoginContainer)
+export default connect(mapStateToPropse, { loginThunk })(LoginContainer);

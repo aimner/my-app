@@ -4,7 +4,7 @@ import preloader from '../../../assets/svg/tail-spin.svg'
 export function Preloader() {
     return (
         <div>
-            <img src={preloader} alt="" />
+            <img src={preloader} alt="preload" />
         </div>
     )
 }

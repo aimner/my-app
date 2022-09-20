@@ -7,9 +7,10 @@ import {
   followUserThunk,
   unFollowUserThunk,
 } from "./../../../state/usersReducer";
-import { Navigate } from "react-router-dom";
 import { AuthHoc } from "./../../../hoc/AuthHoc";
 import { compose } from "redux";
+import {totalCountSelector, usersCountSelector, currentPageSelector, preloadSelector, followIdSelector, usersSelectorSuper } from './../../../selectors/userSelectors';
+
 
 class UsersContainer extends React.Component {
   // если в конструкторе мы ничего не используем, то можно не писать его
@@ -23,7 +24,7 @@ class UsersContainer extends React.Component {
     //   this.props.setTotalCount(value.data.totalCount);
     //   this.props.setPreload(false);
     // });
-  } // метод вызывается после рендеринга компонента
+  } // метод вызывается после рендеринга компонента 
 
   onChangeCurrentPage = (number) => {
     this.props.userGetChangeCurrentPageThunk(number, this.props.usersCount);
@@ -60,12 +61,12 @@ class UsersContainer extends React.Component {
 
 const mapStateToPropse = (state) => {
   return {
-    users: state.usersPage.users,
-    totalCount: state.usersPage.totalCount,
-    usersCount: state.usersPage.usersCount,
-    currentPage: state.usersPage.currentPage,
-    preload: state.usersPage.preload,
-    followId: state.usersPage.followId,
+    users: usersSelectorSuper(state),
+    totalCount: totalCountSelector(state),
+    usersCount: usersCountSelector(state),
+    currentPage: currentPageSelector(state),
+    preload: preloadSelector(state),
+    followId: followIdSelector(state),
   };
 };
 

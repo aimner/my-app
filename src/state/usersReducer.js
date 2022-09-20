@@ -21,7 +21,8 @@ const initialState = {
     currentPage: 1,
     preload: false,
     loadFollowState: false,
-    followId: []
+    followId: [],
+    count: 1
 }
 
 
@@ -102,7 +103,7 @@ export const loadFollow = (loadFollowState) => ({ type: LOAD_FOLLOW, loadFollowS
 
 
 export const userGetThunk = (currentPage, usersCount) => {
-    return (dispatch, v) => {
+    return (dispatch) => {
         dispatch(setPreload(true));
         getUsers(currentPage, usersCount).then((value) => {
             dispatch(setUsers(value.data.items));

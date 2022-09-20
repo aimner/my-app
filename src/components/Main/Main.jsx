@@ -3,17 +3,30 @@ import { Route, Routes } from "react-router-dom";
 import classes from "./Main.module.scss";
 import { NotFound } from "./NotFound/NotFound";
 import { SidePanel } from "./SidePanel/SidePanel";
-import ProfileContainerWithRouter from "./Profile/ProfileContainer";
-import MessagesContainer from "./Messages/MessagesContainer";
-import UserContainer from "./Users/UsersContainer";
-import LoginFormRedux  from './Login/Login';
+// import ProfileContainerWithRouter from "./Profile/ProfileContainer";
+// import MessagesContainer from "./Messages/MessagesContainer";
+// import UserContainer from "./Users/UsersContainer";
+import LoginFormRedux from "./Login/Login";
+import { Preloader } from "./../Common/Preloader/Preloader";
 
+const ProfileContainerWithRouter = React.lazy(() =>
+  import("./Profile/ProfileContainer")
+);
+
+const MessagesContainer = React.lazy(() =>
+  import("./Messages/MessagesContainer")
+);
+
+const UserContainer = React.lazy(() =>
+  import("./Users/UsersContainer")
+);
 
 export const Main = () => {
   return (
-      <main>
-        <div className={classes.main__container}>
-          <SidePanel />
+    <main>
+      <div className={classes.main__container}>
+        <SidePanel />
+        <React.Suspense fallback={<Preloader />}>
           <Routes>
             <Route
               path="/profile"
@@ -28,8 +41,8 @@ export const Main = () => {
             <Route path="/login" element={<LoginFormRedux />}></Route>
             <Route path="*" element={<NotFound />}></Route>
           </Routes>
-        </div>
-      </main>
-
+        </React.Suspense>
+      </div>
+    </main>
   );
 };

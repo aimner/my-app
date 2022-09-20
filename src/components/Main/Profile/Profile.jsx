@@ -1,7 +1,7 @@
 import React from "react";
 import classes from "./Profile.module.scss"
-import { Posts } from "./Posts/Posts";
-import { ProfileInfo } from "./ProfileInfo/ProfileInfo";
+import Posts from "./Posts/Posts";
+import { ProfileInfo } from "./ProfileInfo/ProfileInfoHook";
 import { ProfileInputContainer } from "./ProfileInput/ProfileInput";
 
 
