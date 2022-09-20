@@ -1,16 +1,28 @@
 {
   "files": {
-    "main.css": "/my-app/static/css/main.5633859c.css",
-    "main.js": "/my-app/static/js/main.c1f0cf86.js",
+    "main.css": "/my-app/static/css/main.6b67c322.css",
+    "main.js": "/my-app/static/js/main.f93730d7.js",
+    "static/css/573.d63e7c76.chunk.css": "/my-app/static/css/573.d63e7c76.chunk.css",
+    "static/js/573.a4c20537.chunk.js": "/my-app/static/js/573.a4c20537.chunk.js",
+    "static/css/170.0afebac8.chunk.css": "/my-app/static/css/170.0afebac8.chunk.css",
+    "static/js/170.e27cef67.chunk.js": "/my-app/static/js/170.e27cef67.chunk.js",
+    "static/css/936.aa3b35a3.chunk.css": "/my-app/static/css/936.aa3b35a3.chunk.css",
+    "static/js/936.3c6afe4c.chunk.js": "/my-app/static/js/936.3c6afe4c.chunk.js",
     "static/js/787.28cb0dcd.chunk.js": "/my-app/static/js/787.28cb0dcd.chunk.js",
     "static/media/tail-spin.svg": "/my-app/static/media/tail-spin.86194a552d45044eea10396f20518cab.svg",
     "index.html": "/my-app/index.html",
-    "main.5633859c.css.map": "/my-app/static/css/main.5633859c.css.map",
-    "main.c1f0cf86.js.map": "/my-app/static/js/main.c1f0cf86.js.map",
+    "main.6b67c322.css.map": "/my-app/static/css/main.6b67c322.css.map",
+    "main.f93730d7.js.map": "/my-app/static/js/main.f93730d7.js.map",
+    "573.d63e7c76.chunk.css.map": "/my-app/static/css/573.d63e7c76.chunk.css.map",
+    "573.a4c20537.chunk.js.map": "/my-app/static/js/573.a4c20537.chunk.js.map",
+    "170.0afebac8.chunk.css.map": "/my-app/static/css/170.0afebac8.chunk.css.map",
+    "170.e27cef67.chunk.js.map": "/my-app/static/js/170.e27cef67.chunk.js.map",
+    "936.aa3b35a3.chunk.css.map": "/my-app/static/css/936.aa3b35a3.chunk.css.map",
+    "936.3c6afe4c.chunk.js.map": "/my-app/static/js/936.3c6afe4c.chunk.js.map",
     "787.28cb0dcd.chunk.js.map": "/my-app/static/js/787.28cb0dcd.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.5633859c.css",
-    "static/js/main.c1f0cf86.js"
+    "static/css/main.6b67c322.css",
+    "static/js/main.f93730d7.js"
   ]
 }
