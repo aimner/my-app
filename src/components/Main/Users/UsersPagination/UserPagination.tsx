@@ -26,7 +26,7 @@ export const UserPagination: React.FunctionComponent<PropsType> = (props) => {
         item > paginationCount * numberPagesDisplayed &&
         item <= paginationCount * numberPagesDisplayed + 10 ? (
           <button
-            className={props.currentPage === item ? classes.curientPage : null}
+            className={props.currentPage === item ? classes.curientPage : ''}
             onClick={() => {
               props.onChangeCurrentPage(item);
             }}

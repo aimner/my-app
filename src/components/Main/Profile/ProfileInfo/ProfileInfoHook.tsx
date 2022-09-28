@@ -19,6 +19,7 @@ export const ProfileInfo: React.FunctionComponent<PropsType> = (props) => {
   let [editMode, setEditMode] = useState(false);
   let [formEditMode, setFormEditMode] = useState(false);
   let [status, setStatus] = useState(props.status);
+  
   useEffect(() => {
     setStatus(props.status);
   }, [props.status]);

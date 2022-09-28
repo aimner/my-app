@@ -12,6 +12,12 @@ export type InitialStateType = {
   loadFollowState: boolean;
   followId: number[];
   count: number;
+  filter: FilterType;
+};
+
+export type FilterType = {
+  term: string;
+  friend: string;
 };
 
 export type UserType = {
@@ -22,4 +28,9 @@ export type UserType = {
   followed: boolean;
 };
 
-export type ThunkType = ThunkAction<void, AppStateType, unknown, ReturnType<ActionType<typeof actionsUsersReducer>>>;
+export type ThunkType = ThunkAction<
+  void,
+  AppStateType,
+  unknown,
+  ReturnType<ActionType<typeof actionsUsersReducer>>
+>;

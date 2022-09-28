@@ -1,26 +1,29 @@
-import { createSelector } from "reselect"
-import { AppStateType } from "../state/redux-store"
+import { createSelector } from "reselect";
+import { AppStateType } from "../state/redux-store";
 
 export const usersSelector = (state: AppStateType) => {
-   return state.usersPage.users
-}
+  return state.usersPage.users;
+};
 
 export const usersSelectorSuper = createSelector(usersSelector, (users) => {
-    return users
-})
+  return users;
+});
 
 export const totalCountSelector = (state: AppStateType) => {
-   return state.usersPage.totalCount
-}
+  return state.usersPage.totalCount;
+};
 export const usersCountSelector = (state: AppStateType) => {
-   return state.usersPage.usersCount
-}
+  return state.usersPage.usersCount;
+};
 export const currentPageSelector = (state: AppStateType) => {
-   return state.usersPage.currentPage
-}
+  return state.usersPage.currentPage;
+};
 export const preloadSelector = (state: AppStateType) => {
-   return state.usersPage.preload
-}
+  return state.usersPage.preload;
+};
 export const followIdSelector = (state: AppStateType) => {
-   return state.usersPage.followId
-}
+  return state.usersPage.followId;
+};
+export const filterSelector = (state: AppStateType) => {
+  return state.usersPage.filter;
+};

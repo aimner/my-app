@@ -2,54 +2,57 @@ import React from "react";
 import { Profile } from "./Profile";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { connect } from "react-redux/es/exports";
-import { getProfileThunk, getStatusThunk, setStatusThunk, changePhotoThunk, changeProfileThunk, actionsProfileReducer } from "./../../../state/profileReducer";
+import {
+  getProfileThunk,
+  getStatusThunk,
+  setStatusThunk,
+  changePhotoThunk,
+  changeProfileThunk,
+  actionsProfileReducer,
+} from "./../../../state/profileReducer";
 import { AuthHoc } from "../../../hoc/AuthHoc";
 import { compose } from "redux";
 import { AppStateType } from "../../../state/redux-store";
 import { UserType } from "../../../types/usersReducerType";
 import { PostType, ProfileType } from "../../../types/profileReducerTypes";
 
-let addNewPostText = actionsProfileReducer.addNewPostText
+let addNewPostText = actionsProfileReducer.addNewPostText;
 
 type PropsType = MapStatePropsType & MapDispacthPropsType & OwnPropsType;
 
 type MapStatePropsType = {
   posts: PostType[];
-  authId: number
-  profile: ProfileType
-  status: string
-}
-
-
+  authId: number;
+  profile: ProfileType;
+  status: string;
+};
 
 type MapDispacthPropsType = {
-  getProfileThunk: (id: number) => void
-  getStatusThunk: (id: number) => void
-  addNewPostText: (text: string) => void
-  setStatusThunk: (status: string) => void
-  changePhotoThunk: (file: File) => void
-  changeProfileThunk: (profile: ProfileType) => void
-}
+  getProfileThunk: (id: number) => void;
+  getStatusThunk: (id: number) => void;
+  addNewPostText: (text: string) => void;
+  setStatusThunk: (status: string) => void;
+  changePhotoThunk: (file: File) => void;
+  changeProfileThunk: (profile: ProfileType) => void;
+};
 
 type OwnPropsType = {
-  router: any
-}
-
+  router: any;
+};
 
 class ProfileContainer extends React.Component<PropsType> {
   componentDidMount() {
-    let userId = this.props.router.params.userId || this.props.authId ;
+    let userId = this.props.router.params.userId || this.props.authId;
     this.props.getProfileThunk(userId);
-    this.props.getStatusThunk(userId)
+    this.props.getStatusThunk(userId);
   } // метод вызывается после рендеринга компонента
 
   componentDidUpdate(prevProps: PropsType) {
-      if(this.props.router.params?.userId !== prevProps.router.params?.userId) {
-        let userId = this.props.router.params.userId || this.props.authId ;
-        this.props.getProfileThunk(userId);
-        this.props.getStatusThunk(userId);
-      }
-
+    if (this.props.router.params?.userId !== prevProps.router.params?.userId) {
+      let userId = this.props.router.params.userId || this.props.authId;
+      this.props.getProfileThunk(userId);
+      this.props.getStatusThunk(userId);
+    }
   } // метод выполняется после обновления пропсов или стейта
 
   render() {
@@ -107,7 +110,7 @@ let mapStateToPropse = (state: AppStateType) => {
     posts: state.profilePage.posts,
     profile: state.profilePage.profile,
     status: state.profilePage.status,
-    authId: state.auth.id
+    authId: state.auth.id,
   };
 };
 
@@ -130,10 +133,9 @@ export default compose(
     addNewPostText,
     getProfileThunk,
     getStatusThunk,
-    setStatusThunk, 
+    setStatusThunk,
     changePhotoThunk,
     changeProfileThunk,
-    
   }),
   withRouter,
   AuthHoc
@@ -160,4 +162,3 @@ function withRouter(Component: React.FunctionComponent) {
 //   changePostText,
 //   getProfileThunk,
 // })(ProfileContainerWithRouter);
-

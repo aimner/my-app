@@ -67,7 +67,7 @@ const Login: React.FunctionComponent<InjectedFormProps<LoginFormRedux>> = (props
         <Field name="rememberMe" component="input" type="checkbox" />
         запомнить меня?
       </div>
-      <div className={props.error ? classes.error : null}>{props.error}</div>
+      <div className={props.error ? classes.error : ''}>{props.error}</div>
       <div>
         <button>Отправить данные</button>
       </div>

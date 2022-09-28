@@ -19,9 +19,9 @@ const initialApi = axios.create({
   },
 });
 
-export const getUsers = (currentPage: number, usersCount: number) => {
+export const getUsers = (currentPage: number, usersCount: number, term: string = "", friend: string = "") => {
   return initialApi
-    .get<GetUsersType>(`users?page=${currentPage}&count=${usersCount}`)
+    .get<GetUsersType>(`users?page=${currentPage}&count=${usersCount}&term=${term}&friend=${friend}`)
     .then((value) => value.data);
 };
 

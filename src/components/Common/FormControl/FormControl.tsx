@@ -13,9 +13,9 @@ export const textareaControl: React.FunctionComponent<WrappedFieldProps> = ({
       <textarea
         {...input}
         {...props}
-        className={hasError ? classes.textarea_error : null}></textarea>
+        className={hasError ? classes.textarea_error : ''}></textarea>
       <div>
-        <span className={hasError ? classes.text_error : null}>
+        <span className={hasError ? classes.text_error : ''}>
           {meta.touched ? meta.error : ""}
         </span>
       </div>
@@ -32,9 +32,9 @@ export const inputControl: React.FunctionComponent<WrappedFieldProps> = ({
 
   return (
     <div>
-      <input {...input} {...props} className={hasError ? classes.textarea_error : null}></input>
+      <input {...input} {...props} className={hasError ? classes.textarea_error : ''}></input>
       <div>
-        <span className={hasError ? classes.text_error : null}>
+        <span className={hasError ? classes.text_error : ''}>
           {meta.touched ? meta.error : ""}
         </span>
       </div>

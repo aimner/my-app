@@ -90,7 +90,7 @@ const ProfileInfoForm: React.FunctionComponent<InjectedFormProps<ProfileType>> =
           placeholder="Job description..."
         />
       </div>
-      <div className={props.error ? classes.error : null}>{props.error}</div>
+      <div className={props.error ? classes.error : ''}>{props.error}</div>
       <div>
         <button>Отправить данные</button>
       </div>
