@@ -21,6 +21,7 @@ export type ActionType<T> = T extends {[key: string]: infer U} ? U : never
 // @ts-ignore
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 let store = createStore(reducers, composeEnhancers(applyMiddleware(thunk)));
+
 //@ts-ignore
 
 export default store;

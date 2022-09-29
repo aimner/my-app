@@ -34,25 +34,27 @@ export const Users: React.FunctionComponent<{}> = () => {
   const followId = useSelector(followIdSelector);
   const filter = useSelector(filterSelector);
 
-  
-  
+
   const navigate = useNavigate();
+
+  const [searchParams, setSearchParams] = useSearchParams();
+
   useEffect(() => {
     if (!!filter.term) {
-      navigate(`/users?term=${filter.term}&friend=${filter.friend}&page=${currentPage}`);
+      // navigate(`/users?term=${filter.term}&friend=${filter.friend}&page=${currentPage}`);
+      setSearchParams({ term: filter.term, friend: filter.friend, page: String(currentPage) });
     } else {
-      navigate(`/users?friend=${filter.friend}&page=${currentPage}`);
+      setSearchParams({ friend: filter.friend, page: String(currentPage) });
+      // navigate(`/users?friend=${filter.friend}&page=${currentPage}`);
     }
   }, [filter.friend, filter.term, currentPage]);
-  
-  const [searchParams, setSearchParams] = useSearchParams();
-  
+
   useEffect(() => {
-    let number = +searchParams.get("page")!;
-    let term = searchParams.get("term")! || '';
-    let friend = searchParams.get("friend")!;
+      let number = searchParams.get("page") || 1;
+      let term = searchParams.get("term") || '';
+      let friend = searchParams.get("friend")!;
     if (!filter.friend && !filter.term) {
-      dispatch(searchUsersThunk(number, usersCount, term, friend));
+      dispatch(searchUsersThunk(+number, usersCount, term, friend));
     }
   }, []);
 
@@ -66,7 +68,7 @@ export const Users: React.FunctionComponent<{}> = () => {
   };
 
   const onSearchUsers = (term: string, friend: string) => {
-    dispatch(searchUsersThunk(1, usersCount, term, friend));
+    dispatch(searchUsersThunk(currentPage, usersCount, term, friend));
   };
 
   return (

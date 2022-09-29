@@ -21,6 +21,7 @@ import {
 } from "../../../selectors/userSelectors";
 import { AppStateType } from "../../../state/redux-store";
 import { FilterType, UserType } from "../../../types/usersReducerType";
+import { useSearchParams } from "react-router-dom";
 
 // type PropsType = MapStatePropsType & MapDispacthPropsType & OwnPropsType;
 
@@ -44,7 +45,7 @@ import { FilterType, UserType } from "../../../types/usersReducerType";
 
 // type OwnPropsType = {};
 
-class UsersContainer extends React.Component<{}> {
+const UsersContainer: React.FunctionComponent<{}> = () => {
   // если в конструкторе мы ничего не используем, то можно не писать его
   // componentDidMount() {
   //   this.props.userGetThunk(this.props.currentPage, this.props.usersCount, this.props.filter.term, this.props.filter.friend); // userGetThunk - это userGetThunk = (currentPage, usersCount) => dispatch(userGetThunk(currentPage, usersCount))
@@ -75,10 +76,10 @@ class UsersContainer extends React.Component<{}> {
   // смысл использования в данном месте классовой компоненты вот в чем
   // Реакт создаёт обьект 1 раз, и в след раз при изменении стейта обращается к созданному обьекту
   // а не создаёт его каждый раз
-  render() {
     return (
       <>
         <Users
+
           // // currentPage={this.props.currentPage}
           // // onChangeCurrentPage={this.onChangeCurrentPage}
           // users={this.props.users}
@@ -93,7 +94,6 @@ class UsersContainer extends React.Component<{}> {
         />
       </>
     );
-  }
 }
 
 // const mapStateToPropse = (state: AppStateType) => {

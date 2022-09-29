@@ -1,6 +1,7 @@
 import React from "react";
 import classes from "./ProfileInfo.module.scss";
 
+
 export class ProfileInfo extends React.Component {
   state = {
     activeEdit: false,
@@ -34,6 +35,7 @@ export class ProfileInfo extends React.Component {
     return (
       <div className={classes.profile__info}>
         <div>
+          {}
           <img
             src={
               this.props.profile.photos?.small

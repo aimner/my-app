@@ -7,6 +7,9 @@ import { connect } from "react-redux/es/exports";
 import { loginThunk } from "../../../state/authReducer";
 import { Navigate } from "react-router-dom";
 import { AppStateType } from "../../../state/redux-store";
+import type { MenuProps } from 'antd';
+import { Button, Dropdown, Menu } from 'antd';
+
 
 let maxLengthNumber = maxLength(20);
 
@@ -69,7 +72,7 @@ const Login: React.FunctionComponent<InjectedFormProps<LoginFormRedux>> = (props
       </div>
       <div className={props.error ? classes.error : ''}>{props.error}</div>
       <div>
-        <button>Отправить данные</button>
+        <Button onClick={handleSubmit}>Отправить данные</Button>
       </div>
     </form>
   );

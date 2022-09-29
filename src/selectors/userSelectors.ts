@@ -16,6 +16,7 @@ export const usersCountSelector = (state: AppStateType) => {
   return state.usersPage.usersCount;
 };
 export const currentPageSelector = (state: AppStateType) => {
+  // debugger
   return state.usersPage.currentPage;
 };
 export const preloadSelector = (state: AppStateType) => {

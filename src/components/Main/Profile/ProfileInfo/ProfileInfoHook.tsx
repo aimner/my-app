@@ -2,24 +2,26 @@ import React, { SyntheticEvent } from "react";
 import { useState, useEffect } from "react";
 import { ProfileType } from "../../../../types/profileReducerTypes";
 import classes from "./ProfileInfo.module.scss";
-import { ProfileInfoFormContainer } from './ProfileInfoForm/ProfileInfoForm';
+import { ProfileInfoFormContainer } from "./ProfileInfoForm/ProfileInfoForm";
+import { UserOutlined } from "@ant-design/icons";
+import { Avatar, Button, Input, Upload } from "antd";
+import { UploadOutlined } from "@ant-design/icons";
+import type { UploadProps } from "antd";
 
 type PropsType = {
-  profile: ProfileType
-  status: string
-  authId: number
-  setStatusThunk: (status: string) => void
-  changePhotoThunk: (file: File) => void
-  changeProfileThunk: (profile: ProfileType) => void
-}
-
+  profile: ProfileType;
+  status: string;
+  authId: number;
+  setStatusThunk: (status: string) => void;
+  changePhotoThunk: (file: File) => void;
+  changeProfileThunk: (profile: ProfileType) => void;
+};
 
 export const ProfileInfo: React.FunctionComponent<PropsType> = (props) => {
-  
   let [editMode, setEditMode] = useState(false);
   let [formEditMode, setFormEditMode] = useState(false);
   let [status, setStatus] = useState(props.status);
-  
+
   useEffect(() => {
     setStatus(props.status);
   }, [props.status]);
@@ -34,33 +36,44 @@ export const ProfileInfo: React.FunctionComponent<PropsType> = (props) => {
   };
 
   const changeStatus = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setStatus((event.currentTarget.value))
+    setStatus(event.currentTarget.value);
   };
 
-  const sendPhoto = (event: React.ChangeEvent<HTMLInputElement>) => {
-    props.changePhotoThunk(event.target.files![0]);
+  const sendPhoto = (file: File) => {
+    props.changePhotoThunk(file);
   };
+
+  // const sendPhoto = (event: React.ChangeEvent<HTMLInputElement>) => {
+  //   props.changePhotoThunk(event.target.files![0]);
+  // };
 
   const showHideEditForm = () => {
     setFormEditMode(!formEditMode);
   };
 
+  let uploadFile: UploadProps = {
+    onChange({file}) {
+      console.log(file)
+      // sendPhoto(file.originFileObj as unknown as File)
+    },
+  };
+
   return (
     <div className={classes.profile__info}>
       <div>
-        <img
-          src={
-            props.profile.photos?.small
-              ? props.profile.photos.small
-              : "https://avatars.githubusercontent.com/u/85486375?v=4"
-          }
-          alt="avatar"
-          className={classes.avatar}
-        />
+        {props.profile.photos?.small ? (
+          <Avatar size={128} src={props.profile.photos?.small} />
+        ) : (
+          <Avatar size={128} icon={<UserOutlined />} />
+        )}
         {props.authId === props.profile.userId ? (
-          <input type={"file"} onChange={sendPhoto} />
+          // <input type={"file"} onChange={sendPhoto} />
+          <Upload {...uploadFile}>
+            <Button icon={<UploadOutlined/>}>Upload</Button>
+          </Upload>
         ) : null}
       </div>
+
       {editMode ? (
         <input
           type="text"
@@ -128,4 +141,3 @@ export const ProfileInfo: React.FunctionComponent<PropsType> = (props) => {
     </div>
   );
 };
-
